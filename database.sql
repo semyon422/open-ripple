@@ -497,7 +497,7 @@ CREATE TABLE IF NOT EXISTS `users_stats` (
   `custom_badge_name` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
   `can_custom_badge` int(11) NOT NULL DEFAULT '0',
   `show_custom_badge` int(11) NOT NULL DEFAULT '0',
-  `userpage_content` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `userpage_content` mediumtext NOT NULL DEFAULT '',
   `ranked_score_std` int(11) NOT NULL DEFAULT '0',
   `ranked_score_taiko` int(11) NOT NULL DEFAULT '0',
   `ranked_score_ctb` int(11) NOT NULL DEFAULT '0',
