@@ -136,9 +136,13 @@ export PATH=$PATH:$GOPATH/bin
 export GOBIN=$GOPATH/bin
 source ~/.bashrc
 ```
-7. Trouble solving
+7. Trouble solving  
+* go: signal: killed
 ```
-go: signal: killed
 dmesg -> Out of memory
 solution: stop all servers and try again
+```
+* make pp > score system
+```
+set "score-overwrite": "pp" at common/config.json
 ```
