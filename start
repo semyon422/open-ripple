@@ -1,0 +1,16 @@
+#!/bin/bash
+cd pep.py
+screen -dmS pep.py python3 pep.py
+cd ..
+cd lets
+screen -dmS lets python3 lets.py
+cd ..
+cd hanayo
+screen -dmS hanayo  hanayo
+cd ..
+cd rippleapi
+screen -dmS rippleapi rippleapi
+cd ..
+cd avatar
+screen -dmS avatar python3 avatarserver.py
+cd ..
