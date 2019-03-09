@@ -435,6 +435,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `notes` varchar(128) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
   `email` varchar(128) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
   `donor_expire` int(11) NOT NULL DEFAULT '0',
+  `achievements_version` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1001 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -444,7 +445,8 @@ INSERT INTO `users` (`id`, `username`, `username_safe`, `flags`, `privileges`, `
 
 CREATE TABLE IF NOT EXISTS `users_achievements` (
   `achievement_id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL
+  `user_id` int(11) NOT NULL,
+  `time` INT(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE IF NOT EXISTS `users_relationships` (
