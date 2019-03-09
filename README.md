@@ -78,6 +78,7 @@ git clone --recursive https://github.com/osufx/pep.py
 git clone --recursive https://github.com/osufx/lets
 git clone --recursive https://zxq.co/ripple/rippleapi
 git clone --recursive https://zxq.co/ripple/hanayo
+git clone --recursive https://github.com/osuripple/old-frontend (will clone with error due to secret module)
 ```
 * pep.py
 ```
@@ -105,9 +106,9 @@ nano api.conf
 ```
 * old-frontend (for Ripple Admin Panel)
 ```
-use gatari-frontend, it is simpler to configure
 composer install
 nano inc/config.php
+nano inc/functions.php (remove requiring secret module)
 ```
 * Avatar server
 ```
