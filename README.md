@@ -108,7 +108,7 @@ nano api.conf
 ```
 composer install
 nano inc/config.php
-nano inc/functions.php (remove requiring secret module)
+git clone --recursive https://github.com/osufx/secret
 ```
 * Avatar server
 ```
