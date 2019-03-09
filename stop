@@ -1,16 +1,10 @@
 #!/bin/bash
-cd pep.py
 screen -S pep.py -X quit
-cd ..
-cd lets
 screen -S lets -X quit
-cd ..
-cd hanayo
 screen -S hanayo -X quit
-cd ..
-cd rippleapi
 screen -S rippleapi -X quit
-cd ..
-cd avatar
 screen -S avatar -X quit
-cd ..
+
+killall -9 hanayo
+killall -9 rippleapi
+
