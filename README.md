@@ -21,7 +21,8 @@ Edit openssl.cnf and run gencert.sh to generate certificates. Use cert.pem and k
 Edit and include ripple.conf in your nginx.conf  
 
 5. Database  
-Use database.sql  
+open-ripple/database.sql  
+secret/cakes.sql (change json to text if you use old mariadb)  
 
 6. Some reminders/for-copypase-commands  
 
