@@ -1,6 +1,6 @@
 -- --------------------------------------------------------
--- Хост:                         194.87.93.63
--- Версия сервера:               10.0.36-MariaDB-0ubuntu0.16.04.1 - Ubuntu 16.04
+-- Хост:                         178.21.11.6
+-- Версия сервера:               10.1.26-MariaDB-0+deb9u1 - Debian 9.1
 -- Операционная система:         debian-linux-gnu
 -- HeidiSQL Версия:              9.5.0.5196
 -- --------------------------------------------------------
@@ -11,7 +11,6 @@
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 
--- Дамп структуры для таблица open-ripple.2fa_telegram
 CREATE TABLE IF NOT EXISTS `2fa_telegram` (
   `userid` int(11) NOT NULL DEFAULT '0',
   `id` int(11) NOT NULL,
@@ -19,12 +18,6 @@ CREATE TABLE IF NOT EXISTS `2fa_telegram` (
   PRIMARY KEY (`userid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- Дамп данных таблицы open-ripple.2fa_telegram: ~0 rows (приблизительно)
-DELETE FROM `2fa_telegram`;
-/*!40000 ALTER TABLE `2fa_telegram` DISABLE KEYS */;
-/*!40000 ALTER TABLE `2fa_telegram` ENABLE KEYS */;
-
--- Дамп структуры для таблица open-ripple.2fa_totp
 CREATE TABLE IF NOT EXISTS `2fa_totp` (
   `userid` int(11) NOT NULL DEFAULT '0',
   `enabled` int(11) NOT NULL DEFAULT '0',
@@ -32,35 +25,121 @@ CREATE TABLE IF NOT EXISTS `2fa_totp` (
   PRIMARY KEY (`userid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- Дамп данных таблицы open-ripple.2fa_totp: ~0 rows (приблизительно)
-DELETE FROM `2fa_totp`;
-/*!40000 ALTER TABLE `2fa_totp` DISABLE KEYS */;
-/*!40000 ALTER TABLE `2fa_totp` ENABLE KEYS */;
-
--- Дамп структуры для таблица open-ripple.achievements
 CREATE TABLE IF NOT EXISTS `achievements` (
   `id` int(11) NOT NULL,
-  `name` varchar(255) NOT NULL DEFAULT '',
-  `description` varchar(255) NOT NULL DEFAULT '',
-  `icon` varchar(255) NOT NULL DEFAULT '',
+  `name` varchar(64) NOT NULL,
+  `description` varchar(128) NOT NULL,
+  `icon` varchar(32) NOT NULL,
+  `version` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Дамп данных таблицы open-ripple.achievements: ~0 rows (приблизительно)
-DELETE FROM `achievements`;
-/*!40000 ALTER TABLE `achievements` DISABLE KEYS */;
+INSERT INTO `achievements` (`id`, `name`, `description`, `icon`, `version`) VALUES
+	(1, '500 Combo (osu!std)', '500 big ones! You\'re moving up in the world!', 'osu-combo-500', 1),
+	(2, '750 Combo (osu!std)', '750 big ones! You\'re moving up in the world!', 'osu-combo-750', 1),
+	(3, '1000 Combo (osu!std)', '1000 big ones! You\'re moving up in the world!', 'osu-combo-1000', 1),
+	(4, '2000 Combo (osu!std)', '2000 big ones! You\'re moving up in the world!', 'osu-combo-2000', 1),
+	(5, '500 Combo (osu!taiko)', '500 big ones! You\'re moving up in the world!', 'osu-combo-500', 1),
+	(6, '750 Combo (osu!taiko)', '750 big ones! You\'re moving up in the world!', 'osu-combo-750', 1),
+	(7, '1000 Combo (osu!taiko)', '1000 big ones! You\'re moving up in the world!', 'osu-combo-1000', 1),
+	(8, '2000 Combo (osu!taiko)', '2000 big ones! You\'re moving up in the world!', 'osu-combo-2000', 1),
+	(9, '500 Combo (osu!ctb)', '500 big ones! You\'re moving up in the world!', 'osu-combo-500', 1),
+	(10, '750 Combo (osu!ctb)', '750 big ones! You\'re moving up in the world!', 'osu-combo-750', 1),
+	(11, '1000 Combo (osu!ctb)', '1000 big ones! You\'re moving up in the world!', 'osu-combo-1000', 1),
+	(12, '2000 Combo (osu!ctb)', '2000 big ones! You\'re moving up in the world!', 'osu-combo-2000', 1),
+	(13, '500 Combo (osu!mania)', '500 big ones! You\'re moving up in the world!', 'osu-combo-500', 1),
+	(14, '750 Combo (osu!mania)', '750 big ones! You\'re moving up in the world!', 'osu-combo-750', 1),
+	(15, '1000 Combo (osu!mania)', '1000 big ones! You\'re moving up in the world!', 'osu-combo-1000', 1),
+	(16, '2000 Combo (osu!mania)', '2000 big ones! You\'re moving up in the world!', 'osu-combo-2000', 1),
+	(17, 'Rising Star', 'Can\'t go forward without the first steps.', 'osu-skill-pass-1', 2),
+	(18, 'My First Don', 'Can\'t go forward without the first steps.', 'taiko-skill-pass-1', 2),
+	(19, 'A Slice Of Life', 'Can\'t go forward without the first steps.', 'fruits-skill-pass-1', 2),
+	(20, 'First Steps', 'Can\'t go forward without the first steps.', 'mania-skill-pass-1', 2),
+	(21, 'Constellation Prize', 'Definitely not a consolation prize. Now things start getting hard!', 'osu-skill-pass-2', 2),
+	(22, 'Katsu Katsu Katsu', 'Definitely not a consolation prize. Now things start getting hard!', 'taiko-skill-pass-2', 2),
+	(23, 'Dashing Ever Forward', 'Definitely not a consolation prize. Now things start getting hard!', 'fruits-skill-pass-2', 2),
+	(24, 'No Normal Player', 'Definitely not a consolation prize. Now things start getting hard!', 'mania-skill-pass-2', 2),
+	(25, 'Building Confidence', 'Oh, you\'ve SO got this.', 'osu-skill-pass-3', 2),
+	(26, 'Not Even Trying', 'Oh, you\'ve SO got this.', 'taiko-skill-pass-3', 2),
+	(27, 'Zesty Disposition', 'Oh, you\'ve SO got this.', 'fruits-skill-pass-3', 2),
+	(28, 'Impulse Drive', 'Oh, you\'ve SO got this.', 'mania-skill-pass-3', 2),
+	(29, 'Insanity Approaches', 'You\'re not twitching, you\'re just ready.', 'osu-skill-pass-4', 2),
+	(30, 'Face Your Demons', 'You\'re not twitching, you\'re just ready.', 'taiko-skill-pass-4', 2),
+	(31, 'Hyperdash ON!', 'You\'re not twitching, you\'re just ready.', 'fruits-skill-pass-4', 2),
+	(32, 'Hyperspeed', 'You\'re not twitching, you\'re just ready.', 'mania-skill-pass-4', 2),
+	(33, 'These Clarion Skies', 'Everything seems so clear now.', 'osu-skill-pass-5', 2),
+	(34, 'The Demon Within', 'Everything seems so clear now.', 'taiko-skill-pass-5', 2),
+	(35, 'It\'s Raining Fruit', 'Everything seems so clear now.', 'fruits-skill-pass-5', 2),
+	(36, 'Ever Onwards', 'Everything seems so clear now.', 'mania-skill-pass-5', 2),
+	(37, 'Above and Beyond', 'A cut above the rest.', 'osu-skill-pass-6', 2),
+	(38, 'Drumbreaker', 'A cut above the rest.', 'taiko-skill-pass-6', 2),
+	(39, 'Fruit Ninja', 'A cut above the rest.', 'fruits-skill-pass-6', 2),
+	(40, 'Another Surpassed', 'A cut above the rest.', 'mania-skill-pass-6', 2),
+	(41, 'Supremacy', 'All marvel before your prowess.', 'osu-skill-pass-7', 2),
+	(42, 'The Godfather', 'All marvel before your prowess.', 'taiko-skill-pass-7', 2),
+	(43, 'Dreamcatcher', 'All marvel before your prowess.', 'fruits-skill-pass-7', 2),
+	(44, 'Extra Credit', 'All marvel before your prowess.', 'mania-skill-pass-7', 2),
+	(45, 'Absolution', 'My god, you\'re full of stars!', 'osu-skill-pass-8', 2),
+	(46, 'Rhythm Incarnate', 'My god, you\'re full of stars!', 'taiko-skill-pass-8', 2),
+	(47, 'Lord of the Catch', 'My god, you\'re full of stars!', 'fruits-skill-pass-8', 2),
+	(48, 'Maniac', 'My god, you\'re full of stars!', 'mania-skill-pass-8', 2),
+	(49, 'Totality', 'All the notes. Every single one.', 'osu-skill-fc-1', 3),
+	(50, 'Keeping Time', 'All the notes. Every single one.', 'taiko-skill-fc-1', 3),
+	(51, 'Sweet And Sour', 'All the notes. Every single one.', 'fruits-skill-fc-1', 3),
+	(52, 'Keystruck', 'All the notes. Every single one.', 'mania-skill-fc-1', 3),
+	(53, 'Business As Usual', 'Two to go, please.', 'osu-skill-fc-2', 3),
+	(54, 'To Your Own Beat', 'Two to go, please.', 'taiko-skill-fc-2', 3),
+	(55, 'Reaching The Core', 'Two to go, please.', 'fruits-skill-fc-2', 3),
+	(56, 'Keying In', 'Two to go, please.', 'mania-skill-fc-2', 3),
+	(57, 'Building Steam', 'Hey, this isn\'t so bad.', 'osu-skill-fc-3', 3),
+	(58, 'Big Drums', 'Hey, this isn\'t so bad.', 'taiko-skill-fc-3', 3),
+	(59, 'Clean Platter', 'Hey, this isn\'t so bad.', 'fruits-skill-fc-3', 3),
+	(60, 'Hyperflow', 'Hey, this isn\'t so bad.', 'mania-skill-fc-3', 3),
+	(61, 'Moving Forward', 'Bet you feel good about that.', 'osu-skill-fc-4', 3),
+	(62, 'Adversity Overcome', 'Bet you feel good about that.', 'taiko-skill-fc-4', 3),
+	(63, 'Between The Rain', 'Bet you feel good about that.', 'fruits-skill-fc-4', 3),
+	(64, 'Breakthrough', 'Bet you feel good about that.', 'mania-skill-fc-4', 3),
+	(65, 'Paradigm Shift', 'Surprisingly difficult.', 'osu-skill-fc-5', 3),
+	(66, 'Demonslayer', 'Surprisingly difficult.', 'taiko-skill-fc-5', 3),
+	(67, 'Addicted', 'Surprisingly difficult.', 'fruits-skill-fc-5', 3),
+	(68, 'Everything Extra', 'Surprisingly difficult.', 'mania-skill-fc-5', 3),
+	(69, 'Anguish Quelled', 'Don\'t choke.', 'osu-skill-fc-6', 3),
+	(70, 'Rhythm\'s Call', 'Don\'t choke.', 'taiko-skill-fc-6', 3),
+	(71, 'Quickening', 'Don\'t choke.', 'fruits-skill-fc-6', 3),
+	(72, 'Level Breaker', 'Don\'t choke.', 'mania-skill-fc-6', 3),
+	(73, 'Never Give Up', 'Excellence is its own reward.', 'osu-skill-fc-7', 3),
+	(74, 'Time Everlasting', 'Excellence is its own reward.', 'taiko-skill-fc-7', 3),
+	(75, 'Supersonic', 'Excellence is its own reward.', 'fruits-skill-fc-7', 3),
+	(76, 'Step Up', 'Excellence is its own reward.', 'mania-skill-fc-7', 3),
+	(77, 'Aberration', 'They said it couldn\'t be done. They were wrong.', 'osu-skill-fc-8', 3),
+	(78, 'The Drummer\'s Throne', 'They said it couldn\'t be done. They were wrong.', 'taiko-skill-fc-8', 3),
+	(79, 'Dashing Scarlet', 'They said it couldn\'t be done. They were wrong.', 'fruits-skill-fc-8', 3),
+	(80, 'Behind The Veil', 'They said it couldn\'t be done. They were wrong.', 'mania-skill-fc-8', 3),
+	(81, 'Finality', 'High stakes, no regrets.', 'all-intro-suddendeath', 4),
+	(82, 'Perfectionist', 'Accept nothing but the best.', 'all-intro-perfect', 4),
+	(83, 'Rock Around The Clock', 'You can\'t stop the rock.', 'all-intro-hardrock', 4),
+	(84, 'Time And A Half', 'Having a right ol\' time. One and a half of them, almost.', 'all-intro-doubletime', 4),
+	(85, 'Sweet Rave Party', 'Founded in the fine tradition of changing things that were just fine as they were.', 'all-intro-nightcore', 4),
+	(86, 'Blindsight', 'I can see just perfectly.', 'all-intro-hidden', 4),
+	(87, 'Are You Afraid Of The Dark?', 'Harder than it looks, probably because it\'s hard to look.', 'all-intro-flashlight', 4),
+	(88, 'Dial It Right Back', 'Sometimes you just want to take it easy.', 'all-intro-easy', 4),
+	(89, 'Risk Averse', 'Safety nets are fun!', 'all-intro-nofail', 4),
+	(90, 'Slowboat', 'You got there. Eventually.', 'all-intro-halftime', 4),
+	(91, 'Burned Out', 'One cannot always spin to win.', 'all-intro-spunout', 4),
+	(92, '5,000 Plays', 'There\'s a lot more where that came from.', 'osu-plays-5000', 5),
+	(93, '15,000 Plays', 'Must.. click.. circles..', 'osu-plays-15000', 5),
+	(94, '25,000 Plays', 'There\'s no going back.', 'osu-plays-25000', 5),
+	(95, '50,000 Plays', 'You\'re here forever.', 'osu-plays-50000', 5),
+	(96, 'A meganekko approaches', 'Congratulations, you met Maria!', 'mania-secret-meganekko', 6),
+	(97, 'Don\'t let the bunny distract you!', 'The order was indeed, not a rabbit.', 'all-secret-bunny', 6);
 /*!40000 ALTER TABLE `achievements` ENABLE KEYS */;
 
--- Дамп структуры для таблица open-ripple.badges
 CREATE TABLE IF NOT EXISTS `badges` (
   `id` int(11) NOT NULL,
   `name` varchar(255) DEFAULT NULL,
   `icon` varchar(255) DEFAULT ''
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
--- Дамп данных таблицы open-ripple.badges: ~19 rows (приблизительно)
-DELETE FROM `badges`;
-/*!40000 ALTER TABLE `badges` DISABLE KEYS */;
 INSERT INTO `badges` (`id`, `name`, `icon`) VALUES
 	(4, 'Community Manager', 'red fa-bolt'),
 	(2, 'Developer', 'blue fa-code'),
@@ -83,7 +162,6 @@ INSERT INTO `badges` (`id`, `name`, `icon`) VALUES
 	(40, 'Garbage banned player', 'fa-trash-o');
 /*!40000 ALTER TABLE `badges` ENABLE KEYS */;
 
--- Дамп структуры для таблица open-ripple.bancho_channels
 CREATE TABLE IF NOT EXISTS `bancho_channels` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(32) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
@@ -94,9 +172,6 @@ CREATE TABLE IF NOT EXISTS `bancho_channels` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
--- Дамп данных таблицы open-ripple.bancho_channels: ~4 rows (приблизительно)
-DELETE FROM `bancho_channels`;
-/*!40000 ALTER TABLE `bancho_channels` DISABLE KEYS */;
 INSERT INTO `bancho_channels` (`id`, `name`, `description`, `public_read`, `public_write`, `status`) VALUES
 	(1, '#osu', 'Main Ripple channel', 1, 1, 1),
 	(2, '#announce', 'Announce channel', 1, 0, 1),
@@ -104,7 +179,6 @@ INSERT INTO `bancho_channels` (`id`, `name`, `description`, `public_read`, `publ
 	(5, '#english', 'English speaking channel', 1, 1, 1);
 /*!40000 ALTER TABLE `bancho_channels` ENABLE KEYS */;
 
--- Дамп структуры для таблица open-ripple.bancho_settings
 CREATE TABLE IF NOT EXISTS `bancho_settings` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(32) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
@@ -113,9 +187,6 @@ CREATE TABLE IF NOT EXISTS `bancho_settings` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
--- Дамп данных таблицы open-ripple.bancho_settings: ~8 rows (приблизительно)
-DELETE FROM `bancho_settings`;
-/*!40000 ALTER TABLE `bancho_settings` DISABLE KEYS */;
 INSERT INTO `bancho_settings` (`id`, `name`, `value_int`, `value_string`) VALUES
 	(1, 'bancho_maintenance', 0, ''),
 	(2, 'free_direct', 0, ''),
@@ -127,7 +198,6 @@ INSERT INTO `bancho_settings` (`id`, `name`, `value_int`, `value_string`) VALUES
 	(8, 'osu_md5s', 0, '');
 /*!40000 ALTER TABLE `bancho_settings` ENABLE KEYS */;
 
--- Дамп структуры для таблица open-ripple.beatmaps
 CREATE TABLE IF NOT EXISTS `beatmaps` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `beatmap_id` int(11) NOT NULL DEFAULT '0',
@@ -155,12 +225,16 @@ CREATE TABLE IF NOT EXISTS `beatmaps` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- Дамп данных таблицы open-ripple.beatmaps: ~0 rows (приблизительно)
-DELETE FROM `beatmaps`;
-/*!40000 ALTER TABLE `beatmaps` DISABLE KEYS */;
-/*!40000 ALTER TABLE `beatmaps` ENABLE KEYS */;
+CREATE TABLE IF NOT EXISTS `cakes` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `userid` int(11) NOT NULL,
+  `score_id` int(11) NOT NULL,
+  `processes` text NOT NULL,
+  `detected` text NOT NULL,
+  `flags` int(11) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Дамп структуры для таблица open-ripple.discord_roles
 CREATE TABLE IF NOT EXISTS `discord_roles` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `userid` int(11) NOT NULL,
@@ -169,12 +243,16 @@ CREATE TABLE IF NOT EXISTS `discord_roles` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
--- Дамп данных таблицы open-ripple.discord_roles: ~0 rows (приблизительно)
-DELETE FROM `discord_roles`;
-/*!40000 ALTER TABLE `discord_roles` DISABLE KEYS */;
-/*!40000 ALTER TABLE `discord_roles` ENABLE KEYS */;
+CREATE TABLE IF NOT EXISTS `eggs` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `type` enum('hash','path','file','title') NOT NULL DEFAULT 'hash',
+  `value` varchar(128) NOT NULL,
+  `tag` varchar(128) NOT NULL,
+  `ban` tinyint(1) NOT NULL DEFAULT '0',
+  `is_regex` tinyint(1) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Дамп структуры для таблица open-ripple.hw_user
 CREATE TABLE IF NOT EXISTS `hw_user` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `userid` int(11) NOT NULL DEFAULT '0',
@@ -185,25 +263,13 @@ CREATE TABLE IF NOT EXISTS `hw_user` (
   `activated` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `Индекс 1` (`mac`,`unique_id`,`disk_id`,`userid`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
--- Дамп данных таблицы open-ripple.hw_user: ~0 rows (приблизительно)
-DELETE FROM `hw_user`;
-/*!40000 ALTER TABLE `hw_user` DISABLE KEYS */;
-/*!40000 ALTER TABLE `hw_user` ENABLE KEYS */;
-
--- Дамп структуры для таблица open-ripple.identity_tokens
 CREATE TABLE IF NOT EXISTS `identity_tokens` (
   `userid` int(11) DEFAULT NULL,
   `token` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
--- Дамп данных таблицы open-ripple.identity_tokens: ~0 rows (приблизительно)
-DELETE FROM `identity_tokens`;
-/*!40000 ALTER TABLE `identity_tokens` DISABLE KEYS */;
-/*!40000 ALTER TABLE `identity_tokens` ENABLE KEYS */;
-
--- Дамп структуры для таблица open-ripple.ip_user
 CREATE TABLE IF NOT EXISTS `ip_user` (
   `userid` int(11) NOT NULL DEFAULT '0',
   `ip` varchar(32) NOT NULL DEFAULT '',
@@ -211,24 +277,12 @@ CREATE TABLE IF NOT EXISTS `ip_user` (
   UNIQUE KEY `Индекс 1` (`userid`,`ip`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- Дамп данных таблицы open-ripple.ip_user: ~0 rows (приблизительно)
-DELETE FROM `ip_user`;
-/*!40000 ALTER TABLE `ip_user` DISABLE KEYS */;
-/*!40000 ALTER TABLE `ip_user` ENABLE KEYS */;
-
--- Дамп структуры для таблица open-ripple.irc_tokens
 CREATE TABLE IF NOT EXISTS `irc_tokens` (
   `userid` int(11) NOT NULL DEFAULT '0',
   `token` varchar(16) NOT NULL DEFAULT '',
   PRIMARY KEY (`userid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- Дамп данных таблицы open-ripple.irc_tokens: ~0 rows (приблизительно)
-DELETE FROM `irc_tokens`;
-/*!40000 ALTER TABLE `irc_tokens` DISABLE KEYS */;
-/*!40000 ALTER TABLE `irc_tokens` ENABLE KEYS */;
-
--- Дамп структуры для таблица open-ripple.main_menu_icons
 CREATE TABLE IF NOT EXISTS `main_menu_icons` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
@@ -239,12 +293,6 @@ CREATE TABLE IF NOT EXISTS `main_menu_icons` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
--- Дамп данных таблицы open-ripple.main_menu_icons: ~0 rows (приблизительно)
-DELETE FROM `main_menu_icons`;
-/*!40000 ALTER TABLE `main_menu_icons` DISABLE KEYS */;
-/*!40000 ALTER TABLE `main_menu_icons` ENABLE KEYS */;
-
--- Дамп структуры для таблица open-ripple.osin_access
 CREATE TABLE IF NOT EXISTS `osin_access` (
   `scope` varchar(255) NOT NULL DEFAULT '',
   `extra` tinyint(4) NOT NULL DEFAULT '0',
@@ -253,12 +301,6 @@ CREATE TABLE IF NOT EXISTS `osin_access` (
   `created_at` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
--- Дамп данных таблицы open-ripple.osin_access: ~0 rows (приблизительно)
-DELETE FROM `osin_access`;
-/*!40000 ALTER TABLE `osin_access` DISABLE KEYS */;
-/*!40000 ALTER TABLE `osin_access` ENABLE KEYS */;
-
--- Дамп структуры для таблица open-ripple.osin_client
 CREATE TABLE IF NOT EXISTS `osin_client` (
   `id` int(11) NOT NULL,
   `secret` varchar(255) NOT NULL DEFAULT '',
@@ -266,24 +308,12 @@ CREATE TABLE IF NOT EXISTS `osin_client` (
   `redirect_uri` varchar(255) NOT NULL DEFAULT ''
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
--- Дамп данных таблицы open-ripple.osin_client: ~0 rows (приблизительно)
-DELETE FROM `osin_client`;
-/*!40000 ALTER TABLE `osin_client` DISABLE KEYS */;
-/*!40000 ALTER TABLE `osin_client` ENABLE KEYS */;
-
--- Дамп структуры для таблица open-ripple.osin_client_user
 CREATE TABLE IF NOT EXISTS `osin_client_user` (
   `id` int(11) DEFAULT NULL,
   `client_id` int(11) DEFAULT NULL,
   `user` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
--- Дамп данных таблицы open-ripple.osin_client_user: ~0 rows (приблизительно)
-DELETE FROM `osin_client_user`;
-/*!40000 ALTER TABLE `osin_client_user` DISABLE KEYS */;
-/*!40000 ALTER TABLE `osin_client_user` ENABLE KEYS */;
-
--- Дамп структуры для таблица open-ripple.privileges_groups
 CREATE TABLE IF NOT EXISTS `privileges_groups` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(32) COLLATE utf8_unicode_ci NOT NULL,
@@ -292,9 +322,6 @@ CREATE TABLE IF NOT EXISTS `privileges_groups` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
--- Дамп данных таблицы open-ripple.privileges_groups: ~5 rows (приблизительно)
-DELETE FROM `privileges_groups`;
-/*!40000 ALTER TABLE `privileges_groups` DISABLE KEYS */;
 INSERT INTO `privileges_groups` (`id`, `name`, `privileges`, `color`) VALUES
 	(1, 'none', 0, ''),
 	(2, 'super admin', 7340031, 'info'),
@@ -303,7 +330,6 @@ INSERT INTO `privileges_groups` (`id`, `name`, `privileges`, `color`) VALUES
 	(5, 'developer', 0, '');
 /*!40000 ALTER TABLE `privileges_groups` ENABLE KEYS */;
 
--- Дамп структуры для таблица open-ripple.profile_backgrounds
 CREATE TABLE IF NOT EXISTS `profile_backgrounds` (
   `uid` int(11) NOT NULL,
   `type` int(11) NOT NULL,
@@ -312,12 +338,6 @@ CREATE TABLE IF NOT EXISTS `profile_backgrounds` (
   PRIMARY KEY (`uid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
--- Дамп данных таблицы open-ripple.profile_backgrounds: ~0 rows (приблизительно)
-DELETE FROM `profile_backgrounds`;
-/*!40000 ALTER TABLE `profile_backgrounds` DISABLE KEYS */;
-/*!40000 ALTER TABLE `profile_backgrounds` ENABLE KEYS */;
-
--- Дамп структуры для таблица open-ripple.rank_requests
 CREATE TABLE IF NOT EXISTS `rank_requests` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `bid` int(11) DEFAULT NULL,
@@ -328,12 +348,6 @@ CREATE TABLE IF NOT EXISTS `rank_requests` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
--- Дамп данных таблицы open-ripple.rank_requests: ~0 rows (приблизительно)
-DELETE FROM `rank_requests`;
-/*!40000 ALTER TABLE `rank_requests` DISABLE KEYS */;
-/*!40000 ALTER TABLE `rank_requests` ENABLE KEYS */;
-
--- Дамп структуры для таблица open-ripple.rap_logs
 CREATE TABLE IF NOT EXISTS `rap_logs` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `userid` int(11) NOT NULL DEFAULT '0',
@@ -344,12 +358,6 @@ CREATE TABLE IF NOT EXISTS `rap_logs` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- Дамп данных таблицы open-ripple.rap_logs: ~0 rows (приблизительно)
-DELETE FROM `rap_logs`;
-/*!40000 ALTER TABLE `rap_logs` DISABLE KEYS */;
-/*!40000 ALTER TABLE `rap_logs` ENABLE KEYS */;
-
--- Дамп структуры для таблица open-ripple.reports
 CREATE TABLE IF NOT EXISTS `reports` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `from_uid` int(11) NOT NULL DEFAULT '0',
@@ -360,12 +368,6 @@ CREATE TABLE IF NOT EXISTS `reports` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- Дамп данных таблицы open-ripple.reports: ~0 rows (приблизительно)
-DELETE FROM `reports`;
-/*!40000 ALTER TABLE `reports` DISABLE KEYS */;
-/*!40000 ALTER TABLE `reports` ENABLE KEYS */;
-
--- Дамп структуры для таблица open-ripple.scores
 CREATE TABLE IF NOT EXISTS `scores` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `userid` int(11) NOT NULL DEFAULT '0',
@@ -388,12 +390,6 @@ CREATE TABLE IF NOT EXISTS `scores` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- Дамп данных таблицы open-ripple.scores: ~0 rows (приблизительно)
-DELETE FROM `scores`;
-/*!40000 ALTER TABLE `scores` DISABLE KEYS */;
-/*!40000 ALTER TABLE `scores` ENABLE KEYS */;
-
--- Дамп структуры для таблица open-ripple.system_settings
 CREATE TABLE IF NOT EXISTS `system_settings` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(32) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
@@ -402,9 +398,6 @@ CREATE TABLE IF NOT EXISTS `system_settings` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
--- Дамп данных таблицы open-ripple.system_settings: ~5 rows (приблизительно)
-DELETE FROM `system_settings`;
-/*!40000 ALTER TABLE `system_settings` DISABLE KEYS */;
 INSERT INTO `system_settings` (`id`, `name`, `value_int`, `value_string`) VALUES
 	(1, 'registrations_enabled', 1, ''),
 	(2, 'game_maintenance', 0, ''),
@@ -413,7 +406,6 @@ INSERT INTO `system_settings` (`id`, `name`, `value_int`, `value_string`) VALUES
 	(5, 'website_home_alert', 0, '');
 /*!40000 ALTER TABLE `system_settings` ENABLE KEYS */;
 
--- Дамп структуры для таблица open-ripple.tokens
 CREATE TABLE IF NOT EXISTS `tokens` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `user` int(11) NOT NULL DEFAULT '0',
@@ -423,14 +415,8 @@ CREATE TABLE IF NOT EXISTS `tokens` (
   `private` int(11) NOT NULL DEFAULT '0',
   `last_updated` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
 
--- Дамп данных таблицы open-ripple.tokens: ~0 rows (приблизительно)
-DELETE FROM `tokens`;
-/*!40000 ALTER TABLE `tokens` DISABLE KEYS */;
-/*!40000 ALTER TABLE `tokens` ENABLE KEYS */;
-
--- Дамп структуры для таблица open-ripple.users
 CREATE TABLE IF NOT EXISTS `users` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `username` varchar(32) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
@@ -450,27 +436,17 @@ CREATE TABLE IF NOT EXISTS `users` (
   `email` varchar(128) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
   `donor_expire` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1511 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=1001 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
--- Дамп данных таблицы open-ripple.users: ~1 rows (приблизительно)
-DELETE FROM `users`;
-/*!40000 ALTER TABLE `users` DISABLE KEYS */;
 INSERT INTO `users` (`id`, `username`, `username_safe`, `flags`, `privileges`, `password_md5`, `salt`, `password_version`, `register_datetime`, `latest_activity`, `aqn`, `ban_datetime`, `silence_end`, `silence_reason`, `notes`, `email`, `donor_expire`) VALUES
 	(999, 'FokaBot', 'FokaBot', 0, 7340031, '', 0, 0, 0, 0, 0, 0, 0, '', '', '', 0);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 
--- Дамп структуры для таблица open-ripple.users_achievements
 CREATE TABLE IF NOT EXISTS `users_achievements` (
   `achievement_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
--- Дамп данных таблицы open-ripple.users_achievements: ~0 rows (приблизительно)
-DELETE FROM `users_achievements`;
-/*!40000 ALTER TABLE `users_achievements` DISABLE KEYS */;
-/*!40000 ALTER TABLE `users_achievements` ENABLE KEYS */;
-
--- Дамп структуры для таблица open-ripple.users_relationships
 CREATE TABLE IF NOT EXISTS `users_relationships` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `user1` int(11) NOT NULL DEFAULT '0',
@@ -478,12 +454,6 @@ CREATE TABLE IF NOT EXISTS `users_relationships` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- Дамп данных таблицы open-ripple.users_relationships: ~0 rows (приблизительно)
-DELETE FROM `users_relationships`;
-/*!40000 ALTER TABLE `users_relationships` DISABLE KEYS */;
-/*!40000 ALTER TABLE `users_relationships` ENABLE KEYS */;
-
--- Дамп структуры для таблица open-ripple.users_stats
 CREATE TABLE IF NOT EXISTS `users_stats` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `username` varchar(32) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
@@ -497,7 +467,7 @@ CREATE TABLE IF NOT EXISTS `users_stats` (
   `custom_badge_name` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
   `can_custom_badge` int(11) NOT NULL DEFAULT '0',
   `show_custom_badge` int(11) NOT NULL DEFAULT '0',
-  `userpage_content` mediumtext NOT NULL DEFAULT '',
+  `userpage_content` mediumtext COLLATE utf8_unicode_ci NOT NULL,
   `ranked_score_std` int(11) NOT NULL DEFAULT '0',
   `ranked_score_taiko` int(11) NOT NULL DEFAULT '0',
   `ranked_score_ctb` int(11) NOT NULL DEFAULT '0',
@@ -531,25 +501,16 @@ CREATE TABLE IF NOT EXISTS `users_stats` (
   `replays_watched_ctb` int(11) NOT NULL DEFAULT '0',
   `replays_watched_mania` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1511 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=1001 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
--- Дамп данных таблицы open-ripple.users_stats: ~1 rows (приблизительно)
-DELETE FROM `users_stats`;
-/*!40000 ALTER TABLE `users_stats` DISABLE KEYS */;
 INSERT INTO `users_stats` (`id`, `username`, `username_aka`, `user_color`, `user_style`, `country`, `play_style`, `favourite_mode`, `custom_badge_icon`, `custom_badge_name`, `can_custom_badge`, `show_custom_badge`, `userpage_content`, `ranked_score_std`, `ranked_score_taiko`, `ranked_score_ctb`, `ranked_score_mania`, `avg_accuracy_std`, `avg_accuracy_taiko`, `avg_accuracy_ctb`, `avg_accuracy_mania`, `playcount_std`, `playcount_taiko`, `playcount_ctb`, `playcount_mania`, `total_score_std`, `total_score_taiko`, `total_score_ctb`, `total_score_mania`, `pp_std`, `pp_taiko`, `pp_ctb`, `pp_mania`, `level_std`, `level_taiko`, `level_ctb`, `level_mania`, `total_hits_std`, `total_hits_taiko`, `total_hits_ctb`, `total_hits_mania`, `replays_watched_std`, `replays_watched_taiko`, `replays_watched_ctb`, `replays_watched_mania`) VALUES
-	(999, 'FokaBot', '', '', '', 'XX', 0, 0, '', '', 0, 0, '', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+	(999, 'FokaBot', '', '', '', 'XX', 0, 0, '', '', 0, 0, '', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),;
 /*!40000 ALTER TABLE `users_stats` ENABLE KEYS */;
 
--- Дамп структуры для таблица open-ripple.user_badges
 CREATE TABLE IF NOT EXISTS `user_badges` (
   `badge` int(11) NOT NULL,
   `user` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- Дамп данных таблицы open-ripple.user_badges: ~0 rows (приблизительно)
-DELETE FROM `user_badges`;
-/*!40000 ALTER TABLE `user_badges` DISABLE KEYS */;
-/*!40000 ALTER TABLE `user_badges` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
 /*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;
