@@ -21,8 +21,9 @@ Edit openssl.cnf and run gencert.sh to generate certificates. Use cert.pem and k
 Edit and include ripple.conf in your nginx.conf  
 
 5. Database  
-open-ripple/database.sql  
-secret/cakes.sql (change json to text if you use old mariadb)  
+open-ripple/database.sql - full database with cakes and achievements  
+secret/cakes.sql - cakes (change json to text if you use old mariadb)
+national-gallery/python3 generate_sql.py - achievemets
 
 6. Some reminders/for-copypase-commands  
 
@@ -79,7 +80,13 @@ git clone --recursive https://github.com/osufx/pep.py
 git clone --recursive https://github.com/osufx/lets
 git clone --recursive https://zxq.co/ripple/rippleapi
 git clone --recursive https://zxq.co/ripple/hanayo
-git clone --recursive https://github.com/osuripple/old-frontend (will clone with error due to secret module)
+git clone --recursive https://github.com/osuripple/old-frontend
+(will clone with error due to secret module)
+
+also you may need
+https://github.com/osufx/national-gallery
+https://github.com/osufx/secret
+https://github.com/osufx/ripple-python-common
 ```
 * pep.py
 ```
