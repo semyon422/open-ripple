@@ -49,6 +49,7 @@ sudo apt install php7.0-mbstring
 sudo apt install php7.0-curl
 sudo apt install php-mysql
 sudo apt install mc screen
+sudo apt install luajit
 ```
 * Server enable/start/restart
 ```
