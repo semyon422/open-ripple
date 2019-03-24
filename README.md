@@ -56,14 +56,17 @@ sudo systemctl enable vsftpd
 sudo systemctl enable nginx
 sudo systemctl enable php7.0-fpm
 sudo systemctl enable redis-server
+sudo systemctl enable mysql
 sudo systemctl start vsftpd
 sudo systemctl start nginx
 sudo systemctl start php7.0-fpm
 sudo systemctl start redis-server
+sudo systemctl start mysql
 sudo systemctl restart vsftpd
 sudo systemctl restart nginx
 sudo systemctl restart php7.0-fpm
 sudo systemctl restart redis-server
+sudo systemctl restart mysql
 ```
 * Server configuring
 ```
@@ -76,6 +79,7 @@ sudo nano /etc/mysql/mariadb.conf.d/50-server.cnf (comment "bind-address = 127.0
 * Repository clonning
 ```
 git clone --recursive https://github.com/semyon422/open-ripple
+git clone --recursive https://github.com/semyon422/omppc
 git clone --recursive https://github.com/osufx/pep.py
 git clone --recursive https://github.com/osufx/lets
 git clone --recursive https://zxq.co/ripple/rippleapi
