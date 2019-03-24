@@ -48,6 +48,7 @@ sudo apt install composer
 sudo apt install php7.0-mbstring
 sudo apt install php7.0-curl
 sudo apt install php-mysql
+sudo apt install mc screen
 ```
 * Server enable/start/restart
 ```
@@ -89,14 +90,14 @@ https://github.com/osufx/ripple-python-common
 ```
 * pep.py
 ```
-sudo pip install -r requirements.txt
+sudo pip3 install -r requirements.txt
 python3 setup.py build_ext --inplace
 python3 pep.py
 nano config.ini
 ```
 * lets
 ```
-sudo pip install -r requirements.txt
+sudo pip3 install -r requirements.txt
 python3 setup.py build_ext --inplace
 python3 lets.py
 nano config.ini
