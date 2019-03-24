@@ -150,3 +150,13 @@ solution: stop all servers and try again
 ```
 set "score-overwrite": "pp" at common/config.json
 ```
+* hanayo switcher links
+```
+templates/navbar.html:25
+templates/register/verify.html:12
+```
+* hanayo logo links
+```
+templates/homepage.html:12
+templates/navbar.html:8
+```
