@@ -3,8 +3,8 @@
 This repository is created to collect all the information about installing and configuring ripple server.
 This guide is based on old ripple guides (https://github.com/osuripple/ripple/wiki) and my personal experience.
 1. GNU/Linux  
-I don’t know is it possible to setup a server on Windows (you can try) but I use Ubuntu and it works well.
-
+Ripple is designed to working with Linux. If you want to use it with Windows. You will need to install Linux Subsystem (Using Windows Server 2019 to install Linux subsystem. You can read info about how to installing Linux Subsystem <a href="https://docs.microsoft.com/en-us/windows/wsl/install-on-server">here<a>)
+  
 2. Dependencies  
 * Mysql
 * Redis
