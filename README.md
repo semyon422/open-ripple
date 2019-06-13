@@ -16,6 +16,12 @@ I don’t know is it possible to setup a server on Windows (you can try) but I u
 
 3. Certificate  
 Edit openssl.cnf and run gencert.sh to generate certificates. Use cert.pem and key.pem in your nginx configuration and cert.pem in your switcher.  
+Use this on your site:
+```
+git clone https://github.com/Neilpang/acme.sh.git
+cd acme.sh
+./acme.sh --issue --standalone -d osu.aestival.space -d a.aestival.space -d oldripple.aestival.space
+```  
 
 4. Proxy  
 Edit and include ripple.conf in your nginx.conf  
