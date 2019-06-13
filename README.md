@@ -3,8 +3,8 @@
 This repository is created to collect all the information about installing and configuring ripple server.
 This guide is based on old ripple guides (https://github.com/osuripple/ripple/wiki) and my personal experience.
 1. GNU/Linux  
-I don’t know is it possible to setup a server on Windows (you can try) but I use Ubuntu and it works well.
-
+Ripple is designed to working with Linux. If you want to use it with Windows. You will need to install Linux Subsystem (Using Windows Server 2019 to install Linux subsystem. You can read info about how to installing Linux Subsystem <a href="https://docs.microsoft.com/en-us/windows/wsl/install-on-server">here<a>)
+  
 2. Dependencies  
 * Mysql
 * Redis
@@ -40,7 +40,7 @@ usermod -aG sudo semyon422
 ```
 * All dependencies
 ```
-sudo apt install sudo
+apt install sudo
 sudo apt install gcc g++ build-essential
 sudo apt install python3.5 python3-pip
 sudo apt install git
@@ -49,12 +49,13 @@ sudo apt install redis-server
 sudo apt install libmariadbclient-dev
 sudo apt install vsftpd
 sudo apt install nginx
-sudo apt install redis-server
 sudo apt install php-fpm
 sudo apt install composer
 sudo apt install php7.0-mbstring
 sudo apt install php7.0-curl
 sudo apt install php-mysql
+sudo apt install mc screen
+sudo apt install luajit
 ```
 * Server enable/start/restart
 ```
@@ -62,14 +63,17 @@ sudo systemctl enable vsftpd
 sudo systemctl enable nginx
 sudo systemctl enable php7.0-fpm
 sudo systemctl enable redis-server
+sudo systemctl enable mysql
 sudo systemctl start vsftpd
 sudo systemctl start nginx
 sudo systemctl start php7.0-fpm
 sudo systemctl start redis-server
+sudo systemctl start mysql
 sudo systemctl restart vsftpd
 sudo systemctl restart nginx
 sudo systemctl restart php7.0-fpm
 sudo systemctl restart redis-server
+sudo systemctl restart mysql
 ```
 * Server configuring
 ```
@@ -82,6 +86,7 @@ sudo nano /etc/mysql/mariadb.conf.d/50-server.cnf (comment "bind-address = 127.0
 * Repository clonning
 ```
 git clone --recursive https://github.com/semyon422/open-ripple
+git clone --recursive https://github.com/semyon422/omppc
 git clone --recursive https://github.com/osufx/pep.py
 git clone --recursive https://github.com/osufx/lets
 git clone --recursive https://zxq.co/ripple/rippleapi
@@ -96,14 +101,14 @@ https://github.com/osufx/ripple-python-common
 ```
 * pep.py
 ```
-sudo pip install -r requirements.txt
+sudo pip3 install -r requirements.txt
 python3 setup.py build_ext --inplace
 python3 pep.py
 nano config.ini
 ```
 * lets
 ```
-sudo pip install -r requirements.txt
+sudo pip3 install -r requirements.txt
 python3 setup.py build_ext --inplace
 python3 lets.py
 nano config.ini
@@ -151,4 +156,14 @@ solution: stop all servers and try again
 * make pp > score system
 ```
 set "score-overwrite": "pp" at common/config.json
+```
+* hanayo switcher links
+```
+templates/navbar.html:25
+templates/register/verify.html:12
+```
+* hanayo logo links
+```
+templates/homepage.html:12
+templates/navbar.html:8
 ```
