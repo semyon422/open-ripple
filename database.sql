@@ -1,8 +1,8 @@
 -- --------------------------------------------------------
--- Хост:                         178.21.11.6
--- Версия сервера:               10.1.26-MariaDB-0+deb9u1 - Debian 9.1
+-- Хост:                         osu.aestival.space
+-- Версия сервера:               10.1.38-MariaDB-0+deb9u1 - Debian 9.8
 -- Операционная система:         debian-linux-gnu
--- HeidiSQL Версия:              9.5.0.5196
+-- HeidiSQL Версия:              10.1.0.5464
 -- --------------------------------------------------------
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -135,31 +135,34 @@ INSERT INTO `achievements` (`id`, `name`, `description`, `icon`, `version`) VALU
 /*!40000 ALTER TABLE `achievements` ENABLE KEYS */;
 
 CREATE TABLE IF NOT EXISTS `badges` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) DEFAULT NULL,
-  `icon` varchar(255) DEFAULT ''
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `icon` varchar(255) DEFAULT '',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=71 DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `badges` (`id`, `name`, `icon`) VALUES
-	(4, 'Community Manager', 'red fa-bolt'),
-	(2, 'Developer', 'blue fa-code'),
-	(30, 'Chat Moderator', 'purple fa-star'),
-	(5, 'BAT', 'orange fa-music'),
 	(1, 'Beta tester 1.5', 'fa-gift'),
-	(0, 'None', ''),
+	(2, 'Developer', 'blue fa-code'),
+	(4, 'Community Manager', 'red fa-bolt'),
+	(5, 'BAT', 'orange fa-music'),
 	(6, 'Restricted', 'fa-ban'),
 	(10, 'Beta tester 1.0', 'fa-clock-o'),
 	(11, 'Bot', 'fa-cogs'),
 	(14, 'Donor', 'fa-money'),
-	(15, 'Streamer', 'fa-video-camera'),
+	(15, 'Streamer', 'fa-youtube-play'),
 	(18, 'Ban Hammer', 'fa-gavel'),
 	(23, 'Ripple Alumni', 'fa-graduation-cap'),
 	(24, 'Verified Player', 'blue fa-check-circle'),
 	(25, 'RCT #1 - First Place', 'fa-trophy'),
 	(26, 'RCT #1 - Second Place', 'fa-trophy'),
 	(27, 'RCT #1 - Third Place', 'fa-trophy'),
+	(30, 'Chat Moderator', 'purple fa-star'),
 	(31, 'Translator', 'fa-globe'),
-	(40, 'Garbage banned player', 'fa-trash-o');
+	(40, 'Garbage banned player', 'fa-trash-o'),
+	(50, 'O2JAM', 'fa-qq'),
+	(60, 'None', ''),
+	(70, 'literally idiot', 'fa-odnoklassniki');
 /*!40000 ALTER TABLE `badges` ENABLE KEYS */;
 
 CREATE TABLE IF NOT EXISTS `bancho_channels` (
@@ -222,8 +225,12 @@ CREATE TABLE IF NOT EXISTS `beatmaps` (
   `pp_99` float NOT NULL DEFAULT '0',
   `pp_98` float NOT NULL DEFAULT '0',
   `pp_95` float NOT NULL DEFAULT '0',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  PRIMARY KEY (`id`),
+  KEY `beatmap_md5` (`beatmap_md5`),
+  KEY `beatmap_id` (`beatmap_id`),
+  KEY `beatmapset_id` (`beatmapset_id`),
+  KEY `song_name` (`song_name`)
+) ENGINE=InnoDB AUTO_INCREMENT=119170 DEFAULT CHARSET=utf8;
 
 CREATE TABLE IF NOT EXISTS `cakes` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -262,8 +269,8 @@ CREATE TABLE IF NOT EXISTS `hw_user` (
   `occurencies` int(11) NOT NULL DEFAULT '0',
   `activated` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
-  UNIQUE KEY `Индекс 1` (`mac`,`unique_id`,`disk_id`,`userid`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+  UNIQUE KEY `Index1` (`mac`,`unique_id`,`disk_id`,`userid`)
+) ENGINE=InnoDB AUTO_INCREMENT=2876 DEFAULT CHARSET=utf8;
 
 CREATE TABLE IF NOT EXISTS `identity_tokens` (
   `userid` int(11) DEFAULT NULL,
@@ -291,7 +298,7 @@ CREATE TABLE IF NOT EXISTS `main_menu_icons` (
   `is_current` tinyint(4) NOT NULL DEFAULT '0',
   `is_default` tinyint(4) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE IF NOT EXISTS `osin_access` (
   `scope` varchar(255) NOT NULL DEFAULT '',
@@ -320,14 +327,17 @@ CREATE TABLE IF NOT EXISTS `privileges_groups` (
   `privileges` int(11) NOT NULL,
   `color` varchar(32) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 INSERT INTO `privileges_groups` (`id`, `name`, `privileges`, `color`) VALUES
 	(1, 'none', 0, ''),
-	(2, 'super admin', 7340031, 'info'),
-	(3, 'chat mod', 0, ''),
-	(4, 'community manager', 0, ''),
-	(5, 'developer', 0, '');
+	(2, 'super admin', 7340031, 'success'),
+	(3, 'chat mod', 60, 'danger'),
+	(4, 'community manager', 80, 'info'),
+	(5, 'developer', 100, 'primary'),
+	(6, 'BAT', 11, 'warning'),
+	(7, 'Qat', 267, 'warning'),
+	(8, 'Spectator', 528491, 'danger');
 /*!40000 ALTER TABLE `privileges_groups` ENABLE KEYS */;
 
 CREATE TABLE IF NOT EXISTS `profile_backgrounds` (
@@ -346,7 +356,7 @@ CREATE TABLE IF NOT EXISTS `rank_requests` (
   `userid` int(11) DEFAULT NULL,
   `blacklisted` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE IF NOT EXISTS `rap_logs` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -356,7 +366,7 @@ CREATE TABLE IF NOT EXISTS `rap_logs` (
   `through` varchar(32) NOT NULL DEFAULT '',
   `discord` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=1984 DEFAULT CHARSET=utf8;
 
 CREATE TABLE IF NOT EXISTS `reports` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -366,7 +376,7 @@ CREATE TABLE IF NOT EXISTS `reports` (
   `chatlog` int(11) NOT NULL DEFAULT '0',
   `time` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
 
 CREATE TABLE IF NOT EXISTS `scores` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -387,8 +397,14 @@ CREATE TABLE IF NOT EXISTS `scores` (
   `completed` int(11) NOT NULL DEFAULT '0',
   `pp` int(11) NOT NULL DEFAULT '0',
   `time` varchar(18) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  PRIMARY KEY (`id`),
+  KEY `score` (`score`),
+  KEY `pp` (`pp`),
+  KEY `userid` (`userid`),
+  KEY `play_mode` (`play_mode`),
+  KEY `completed` (`completed`),
+  KEY `time` (`time`)
+) ENGINE=InnoDB AUTO_INCREMENT=6780 DEFAULT CHARSET=utf8;
 
 CREATE TABLE IF NOT EXISTS `system_settings` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -415,7 +431,7 @@ CREATE TABLE IF NOT EXISTS `tokens` (
   `private` int(11) NOT NULL DEFAULT '0',
   `last_updated` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=346 DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE IF NOT EXISTS `users` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -436,17 +452,21 @@ CREATE TABLE IF NOT EXISTS `users` (
   `email` varchar(128) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
   `donor_expire` int(11) NOT NULL DEFAULT '0',
   `achievements_version` int(11) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1001 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  PRIMARY KEY (`id`),
+  KEY `username` (`username`),
+  KEY `privileges` (`privileges`)
+) ENGINE=InnoDB AUTO_INCREMENT=1458 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
-INSERT INTO `users` (`id`, `username`, `username_safe`, `flags`, `privileges`, `password_md5`, `salt`, `password_version`, `register_datetime`, `latest_activity`, `aqn`, `ban_datetime`, `silence_end`, `silence_reason`, `notes`, `email`, `donor_expire`) VALUES
-	(999, 'FokaBot', 'FokaBot', 0, 7340031, '', 0, 0, 0, 0, 0, 0, 0, '', '', '', 0);
+-- Дамп данных таблицы ripple.users: ~457 rows (приблизительно)
+/*!40000 ALTER TABLE `users` DISABLE KEYS */;
+INSERT INTO `users` (`id`, `username`, `username_safe`, `flags`, `privileges`, `password_md5`, `salt`, `password_version`, `register_datetime`, `latest_activity`, `aqn`, `ban_datetime`, `silence_end`, `silence_reason`, `notes`, `email`, `donor_expire`, `achievements_version`) VALUES
+	(999, 'Hiragi', 'Hiragi', 0, 3145727, '', 0, 0, 0, 0, 0, 0, 1552497038, 'aa', '', '', 0, 0);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 
 CREATE TABLE IF NOT EXISTS `users_achievements` (
   `achievement_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
-  `time` INT(11) NOT NULL
+  `time` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE IF NOT EXISTS `users_relationships` (
@@ -454,7 +474,7 @@ CREATE TABLE IF NOT EXISTS `users_relationships` (
   `user1` int(11) NOT NULL DEFAULT '0',
   `user2` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=143 DEFAULT CHARSET=utf8;
 
 CREATE TABLE IF NOT EXISTS `users_stats` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -503,10 +523,10 @@ CREATE TABLE IF NOT EXISTS `users_stats` (
   `replays_watched_ctb` int(11) NOT NULL DEFAULT '0',
   `replays_watched_mania` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1001 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=1458 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 INSERT INTO `users_stats` (`id`, `username`, `username_aka`, `user_color`, `user_style`, `country`, `play_style`, `favourite_mode`, `custom_badge_icon`, `custom_badge_name`, `can_custom_badge`, `show_custom_badge`, `userpage_content`, `ranked_score_std`, `ranked_score_taiko`, `ranked_score_ctb`, `ranked_score_mania`, `avg_accuracy_std`, `avg_accuracy_taiko`, `avg_accuracy_ctb`, `avg_accuracy_mania`, `playcount_std`, `playcount_taiko`, `playcount_ctb`, `playcount_mania`, `total_score_std`, `total_score_taiko`, `total_score_ctb`, `total_score_mania`, `pp_std`, `pp_taiko`, `pp_ctb`, `pp_mania`, `level_std`, `level_taiko`, `level_ctb`, `level_mania`, `total_hits_std`, `total_hits_taiko`, `total_hits_ctb`, `total_hits_mania`, `replays_watched_std`, `replays_watched_taiko`, `replays_watched_ctb`, `replays_watched_mania`) VALUES
-	(999, 'FokaBot', '', '', '', 'XX', 0, 0, '', '', 0, 0, '', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),;
+	(999, 'FokaBot', '', '', '', 'XX', 0, 0, '', '', 0, 0, '', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
 /*!40000 ALTER TABLE `users_stats` ENABLE KEYS */;
 
 CREATE TABLE IF NOT EXISTS `user_badges` (
