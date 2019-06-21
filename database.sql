@@ -1,16 +1,3 @@
--- --------------------------------------------------------
--- Хост:                         osu.aestival.space
--- Версия сервера:               10.1.38-MariaDB-0+deb9u1 - Debian 9.8
--- Операционная система:         debian-linux-gnu
--- HeidiSQL Версия:              10.1.0.5464
--- --------------------------------------------------------
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET NAMES utf8 */;
-/*!50503 SET NAMES utf8mb4 */;
-/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
-/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
-
 CREATE TABLE IF NOT EXISTS `2fa_telegram` (
   `userid` int(11) NOT NULL DEFAULT '0',
   `id` int(11) NOT NULL,
@@ -132,14 +119,13 @@ INSERT INTO `achievements` (`id`, `name`, `description`, `icon`, `version`) VALU
 	(95, '50,000 Plays', 'You\'re here forever.', 'osu-plays-50000', 5),
 	(96, 'A meganekko approaches', 'Congratulations, you met Maria!', 'mania-secret-meganekko', 6),
 	(97, 'Don\'t let the bunny distract you!', 'The order was indeed, not a rabbit.', 'all-secret-bunny', 6);
-/*!40000 ALTER TABLE `achievements` ENABLE KEYS */;
 
 CREATE TABLE IF NOT EXISTS `badges` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) DEFAULT NULL,
   `icon` varchar(255) DEFAULT '',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=71 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `badges` (`id`, `name`, `icon`) VALUES
 	(1, 'Beta tester 1.5', 'fa-gift'),
@@ -163,7 +149,6 @@ INSERT INTO `badges` (`id`, `name`, `icon`) VALUES
 	(50, 'O2JAM', 'fa-qq'),
 	(60, 'None', ''),
 	(70, 'literally idiot', 'fa-odnoklassniki');
-/*!40000 ALTER TABLE `badges` ENABLE KEYS */;
 
 CREATE TABLE IF NOT EXISTS `bancho_channels` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -173,14 +158,13 @@ CREATE TABLE IF NOT EXISTS `bancho_channels` (
   `public_write` tinyint(4) NOT NULL DEFAULT '0',
   `status` tinyint(4) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 INSERT INTO `bancho_channels` (`id`, `name`, `description`, `public_read`, `public_write`, `status`) VALUES
 	(1, '#osu', 'Main Ripple channel', 1, 1, 1),
 	(2, '#announce', 'Announce channel', 1, 0, 1),
 	(3, '#admin', 'Admin only channel', 0, 0, 1),
 	(5, '#english', 'English speaking channel', 1, 1, 1);
-/*!40000 ALTER TABLE `bancho_channels` ENABLE KEYS */;
 
 CREATE TABLE IF NOT EXISTS `bancho_settings` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -188,7 +172,7 @@ CREATE TABLE IF NOT EXISTS `bancho_settings` (
   `value_int` int(11) NOT NULL DEFAULT '0',
   `value_string` varchar(512) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 INSERT INTO `bancho_settings` (`id`, `name`, `value_int`, `value_string`) VALUES
 	(1, 'bancho_maintenance', 0, ''),
@@ -199,7 +183,6 @@ INSERT INTO `bancho_settings` (`id`, `name`, `value_int`, `value_string`) VALUES
 	(6, 'login_notification', 0, 'Welcome!'),
 	(7, 'osu_versions', 0, ''),
 	(8, 'osu_md5s', 0, '');
-/*!40000 ALTER TABLE `bancho_settings` ENABLE KEYS */;
 
 CREATE TABLE IF NOT EXISTS `beatmaps` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -230,7 +213,7 @@ CREATE TABLE IF NOT EXISTS `beatmaps` (
   KEY `beatmap_id` (`beatmap_id`),
   KEY `beatmapset_id` (`beatmapset_id`),
   KEY `song_name` (`song_name`)
-) ENGINE=InnoDB AUTO_INCREMENT=119170 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE IF NOT EXISTS `cakes` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -270,7 +253,7 @@ CREATE TABLE IF NOT EXISTS `hw_user` (
   `activated` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `Index1` (`mac`,`unique_id`,`disk_id`,`userid`)
-) ENGINE=InnoDB AUTO_INCREMENT=2876 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE IF NOT EXISTS `identity_tokens` (
   `userid` int(11) DEFAULT NULL,
@@ -298,7 +281,7 @@ CREATE TABLE IF NOT EXISTS `main_menu_icons` (
   `is_current` tinyint(4) NOT NULL DEFAULT '0',
   `is_default` tinyint(4) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE IF NOT EXISTS `osin_access` (
   `scope` varchar(255) NOT NULL DEFAULT '',
@@ -327,7 +310,7 @@ CREATE TABLE IF NOT EXISTS `privileges_groups` (
   `privileges` int(11) NOT NULL,
   `color` varchar(32) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 INSERT INTO `privileges_groups` (`id`, `name`, `privileges`, `color`) VALUES
 	(1, 'none', 0, ''),
@@ -338,7 +321,6 @@ INSERT INTO `privileges_groups` (`id`, `name`, `privileges`, `color`) VALUES
 	(6, 'BAT', 11, 'warning'),
 	(7, 'Qat', 267, 'warning'),
 	(8, 'Spectator', 528491, 'danger');
-/*!40000 ALTER TABLE `privileges_groups` ENABLE KEYS */;
 
 CREATE TABLE IF NOT EXISTS `profile_backgrounds` (
   `uid` int(11) NOT NULL,
@@ -356,7 +338,7 @@ CREATE TABLE IF NOT EXISTS `rank_requests` (
   `userid` int(11) DEFAULT NULL,
   `blacklisted` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE IF NOT EXISTS `rap_logs` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -366,7 +348,7 @@ CREATE TABLE IF NOT EXISTS `rap_logs` (
   `through` varchar(32) NOT NULL DEFAULT '',
   `discord` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1984 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE IF NOT EXISTS `reports` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -376,7 +358,7 @@ CREATE TABLE IF NOT EXISTS `reports` (
   `chatlog` int(11) NOT NULL DEFAULT '0',
   `time` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE IF NOT EXISTS `scores` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -404,7 +386,7 @@ CREATE TABLE IF NOT EXISTS `scores` (
   KEY `play_mode` (`play_mode`),
   KEY `completed` (`completed`),
   KEY `time` (`time`)
-) ENGINE=InnoDB AUTO_INCREMENT=6780 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE IF NOT EXISTS `system_settings` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -412,7 +394,7 @@ CREATE TABLE IF NOT EXISTS `system_settings` (
   `value_int` int(11) NOT NULL DEFAULT '0',
   `value_string` varchar(512) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 INSERT INTO `system_settings` (`id`, `name`, `value_int`, `value_string`) VALUES
 	(1, 'registrations_enabled', 1, ''),
@@ -420,7 +402,6 @@ INSERT INTO `system_settings` (`id`, `name`, `value_int`, `value_string`) VALUES
 	(3, 'website_maintenance', 0, ''),
 	(4, 'website_global_alert', 0, ''),
 	(5, 'website_home_alert', 0, '');
-/*!40000 ALTER TABLE `system_settings` ENABLE KEYS */;
 
 CREATE TABLE IF NOT EXISTS `tokens` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -431,7 +412,7 @@ CREATE TABLE IF NOT EXISTS `tokens` (
   `private` int(11) NOT NULL DEFAULT '0',
   `last_updated` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=346 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE IF NOT EXISTS `users` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -455,13 +436,10 @@ CREATE TABLE IF NOT EXISTS `users` (
   PRIMARY KEY (`id`),
   KEY `username` (`username`),
   KEY `privileges` (`privileges`)
-) ENGINE=InnoDB AUTO_INCREMENT=1458 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
--- Дамп данных таблицы ripple.users: ~457 rows (приблизительно)
-/*!40000 ALTER TABLE `users` DISABLE KEYS */;
 INSERT INTO `users` (`id`, `username`, `username_safe`, `flags`, `privileges`, `password_md5`, `salt`, `password_version`, `register_datetime`, `latest_activity`, `aqn`, `ban_datetime`, `silence_end`, `silence_reason`, `notes`, `email`, `donor_expire`, `achievements_version`) VALUES
-	(999, 'Hiragi', 'Hiragi', 0, 3145727, '', 0, 0, 0, 0, 0, 0, 1552497038, 'aa', '', '', 0, 0);
-/*!40000 ALTER TABLE `users` ENABLE KEYS */;
+	(999, 'FokaBot', 'FokaBot', 0, 3145727, '', 0, 0, 0, 0, 0, 0, 1552497038, 'aa', '', '', 0, 0);
 
 CREATE TABLE IF NOT EXISTS `users_achievements` (
   `achievement_id` int(11) NOT NULL,
@@ -474,7 +452,7 @@ CREATE TABLE IF NOT EXISTS `users_relationships` (
   `user1` int(11) NOT NULL DEFAULT '0',
   `user2` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=143 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE IF NOT EXISTS `users_stats` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -523,17 +501,12 @@ CREATE TABLE IF NOT EXISTS `users_stats` (
   `replays_watched_ctb` int(11) NOT NULL DEFAULT '0',
   `replays_watched_mania` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1458 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 INSERT INTO `users_stats` (`id`, `username`, `username_aka`, `user_color`, `user_style`, `country`, `play_style`, `favourite_mode`, `custom_badge_icon`, `custom_badge_name`, `can_custom_badge`, `show_custom_badge`, `userpage_content`, `ranked_score_std`, `ranked_score_taiko`, `ranked_score_ctb`, `ranked_score_mania`, `avg_accuracy_std`, `avg_accuracy_taiko`, `avg_accuracy_ctb`, `avg_accuracy_mania`, `playcount_std`, `playcount_taiko`, `playcount_ctb`, `playcount_mania`, `total_score_std`, `total_score_taiko`, `total_score_ctb`, `total_score_mania`, `pp_std`, `pp_taiko`, `pp_ctb`, `pp_mania`, `level_std`, `level_taiko`, `level_ctb`, `level_mania`, `total_hits_std`, `total_hits_taiko`, `total_hits_ctb`, `total_hits_mania`, `replays_watched_std`, `replays_watched_taiko`, `replays_watched_ctb`, `replays_watched_mania`) VALUES
 	(999, 'FokaBot', '', '', '', 'XX', 0, 0, '', '', 0, 0, '', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
-/*!40000 ALTER TABLE `users_stats` ENABLE KEYS */;
 
 CREATE TABLE IF NOT EXISTS `user_badges` (
   `badge` int(11) NOT NULL,
   `user` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
-/*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
-/*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
