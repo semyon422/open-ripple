@@ -20,7 +20,7 @@ Use this on your site:
 ```
 git clone https://github.com/Neilpang/acme.sh.git
 cd acme.sh
-./acme.sh --issue --standalone -d osu.aestival.space -d a.aestival.space -d oldripple.aestival.space
+./acme.sh --issue --standalone -d osu.aestival.space -d c.aestival.space -d a.aestival.space -d oldripple.aestival.space
 ```  
 
 4. Proxy  
