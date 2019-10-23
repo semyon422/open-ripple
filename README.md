@@ -88,7 +88,7 @@ sudo nano /etc/mysql/mariadb.conf.d/50-server.cnf (comment "bind-address = 127.0
 git clone --recursive https://github.com/semyon422/open-ripple
 git clone --recursive https://github.com/semyon422/omppc
 git clone --recursive https://github.com/osufx/pep.py
-git clone --recursive https://github.com/osufx/lets
+git clone --recursive https://github.com/osuthailand/lets
 git clone --recursive https://zxq.co/ripple/rippleapi
 git clone --recursive https://zxq.co/ripple/hanayo
 git clone --recursive https://github.com/osuripple/old-frontend
